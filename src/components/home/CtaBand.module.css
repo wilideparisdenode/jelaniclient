@@ -1,0 +1,4 @@
+.wrap { max-width: 640px; margin: 0 auto; text-align: center; }
+.wrap h2 { font: 600 clamp(26px, 4vw, 38px)/1.2 var(--font-display); }
+.wrap p { margin-top: 12px; color: #d6e0ee; font-size: 17px; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 28px; }

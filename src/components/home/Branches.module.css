@@ -1,0 +1,7 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.card { display: grid; gap: 8px; align-content: start; padding: 28px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.card h3 { color: var(--brand); font-size: 20px; }
+.card p { color: var(--ink-soft); font-size: 14px; }
+.address { color: var(--muted) !important; }
+.tag { justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; color: var(--brand); background: #e8eef7; font-size: 12px; font-weight: 600; }
+.virtual { color: var(--accent-dark); background: #fdf1e6; }

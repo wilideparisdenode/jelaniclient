@@ -1,0 +1,23 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.card { display: grid; grid-template-rows: auto 1fr; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--paper); }
+.cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.cardBody { display: grid; gap: 8px; padding: 20px; align-content: start; }
+.cardBody h3 { color: var(--brand); font-size: 18px; }
+.cardBody p { color: var(--ink-soft); font-size: 14px; }
+.meta { color: var(--muted); font-size: 13px; }
+
+.article { max-width: 760px; margin: 0 auto; }
+.article h1 { margin-bottom: 8px; color: var(--brand); font: 600 34px var(--font-display); }
+.coverFull { width: 100%; max-height: 420px; object-fit: cover; margin: 20px 0; border-radius: 14px; }
+.prose { margin-top: 20px; color: var(--ink-soft); white-space: pre-wrap; }
+
+.comments { max-width: 760px; margin: 44px auto 0; display: grid; gap: 16px; }
+.comments h2 { color: var(--brand); font-size: 22px; }
+.comment { display: grid; gap: 4px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.comment small { color: var(--muted); }
+.comment p { color: var(--ink-soft); }
+.form { display: grid; gap: 12px; }
+.form textarea { min-height: 100px; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); resize: vertical; }
+.note { color: var(--muted); font-size: 14px; }
+.ok { color: var(--success); font-size: 14px; font-weight: 600; }
+.error { color: var(--danger); font-size: 14px; }

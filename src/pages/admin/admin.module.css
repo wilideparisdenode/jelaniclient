@@ -1,0 +1,27 @@
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.form > :is(textarea, fieldset, .actions, .check) { grid-column: 1 / -1; }
+.form > div:has(textarea) { grid-column: 1 / -1; }
+.wide { grid-column: 1 / -1; }
+.select { display: grid; gap: 6px; color: var(--ink-soft); font-size: 14px; font-weight: 600; }
+.select select { padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font-weight: 400; }
+.fieldset { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); }
+.fieldset legend { padding: 0 6px; color: var(--ink-soft); font-size: 14px; font-weight: 600; }
+.check { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: 14px; }
+.actions { display: flex; gap: 10px; }
+.stack { display: grid; gap: 16px; }
+.answerRow { display: flex; gap: 8px; align-items: flex-start; }
+.answerRow textarea { flex: 1; min-height: 60px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.qa { display: grid; gap: 10px; margin-bottom: 14px; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.qa h3 { color: var(--brand); font-size: 16px; }
+.qa small { color: var(--muted); }
+.answer { padding: 10px 12px; border-left: 3px solid var(--success); background: #f0fdf4; color: var(--ink-soft); font-size: 14px; }
+.questions { display: grid; gap: 16px; }
+.question { display: grid; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.question > header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.question > header h4 { color: var(--brand); font-size: 15px; }
+.options { display: grid; gap: 8px; }
+.option { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); font-size: 14px; }
+.option input[type='text'] { flex: 1; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); }
+.option input[type='radio'] { flex: none; }
+.option span { flex: none; color: var(--muted); font-size: 12px; white-space: nowrap; }
+@media (max-width: 720px) { .form { grid-template-columns: 1fr; } }

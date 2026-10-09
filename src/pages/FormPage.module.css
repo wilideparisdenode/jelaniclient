@@ -1,0 +1,8 @@
+.form { display: grid; gap: 18px; max-width: 640px; margin: 0 auto; padding: 32px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.error { color: var(--danger); font-size: 14px; }
+.ok { color: var(--success); font-weight: 600; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; max-width: var(--container); margin: 0 auto 40px; }
+.card { display: grid; gap: 6px; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); }
+.card svg { color: var(--accent); }
+.card h3 { color: var(--brand); font-size: 17px; }
+.card p { color: var(--ink-soft); font-size: 14px; }

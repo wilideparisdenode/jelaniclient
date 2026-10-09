@@ -1,0 +1,10 @@
+.footer { padding: 56px 24px 28px; color: #e6ddd4; background: var(--brand-dark); }
+.inner { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+.brand { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; color: #fff; font: 700 20px var(--font-display); }
+.logo { height: 44px; width: auto; display: block; }
+.about p { max-width: 340px; font-size: 14px; }
+.col { display: grid; gap: 10px; align-content: start; font-size: 14px; }
+.col h4 { margin-bottom: 4px; color: #fff; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; }
+.col a:hover { color: var(--accent); }
+.legal { max-width: var(--container); margin: 40px auto 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.14); font-size: 13px; color: #c2b1a4; }
+@media (max-width: 720px) { .inner { grid-template-columns: 1fr; } }

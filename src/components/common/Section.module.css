@@ -1,0 +1,6 @@
+.section { padding: 88px 24px; }
+.container { max-width: var(--container); margin: 0 auto; }
+.plain { background: var(--paper); }
+.surface { background: var(--surface); }
+.dark { background: var(--brand); color: #fff; }
+@media (max-width: 720px) { .section { padding: 60px 20px; } }

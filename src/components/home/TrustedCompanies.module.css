@@ -1,0 +1,7 @@
+.band { padding: 44px 24px; border-bottom: 1px solid var(--line); background: var(--paper); }
+.inner { max-width: var(--container); margin: 0 auto; text-align: center; }
+.title { margin-bottom: 26px; color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+.logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 20px 56px; margin: 0; padding: 0; list-style: none; }
+.logos img { max-height: 34px; width: auto; opacity: 0.65; filter: grayscale(1); transition: opacity 0.2s, filter 0.2s; }
+.logos img:hover { opacity: 1; filter: none; }
+.wordmark { color: #94a3b8; font: 700 22px var(--font-display); letter-spacing: 0.5px; }

@@ -1,0 +1,2 @@
+.row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.row h1 { color: var(--brand); font: 600 28px var(--font-display); }

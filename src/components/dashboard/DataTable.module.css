@@ -1,0 +1,9 @@
+.wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+.table th { padding: 12px 16px; color: var(--muted); background: var(--surface); font-size: 12px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; white-space: nowrap; }
+.table td { padding: 12px 16px; border-top: 1px solid var(--line); color: var(--ink-soft); vertical-align: top; }
+.actions { display: flex; gap: 8px; justify-content: flex-end; white-space: nowrap; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 999px; background: var(--surface); font-size: 12px; font-weight: 600; text-transform: capitalize; }
+.confirmed, .approved { color: var(--success); background: #dcfce7; }
+.pending { color: #92400e; background: #fef3c7; }
+.cancelled, .refunded, .rejected { color: var(--danger); background: #fee2e2; }

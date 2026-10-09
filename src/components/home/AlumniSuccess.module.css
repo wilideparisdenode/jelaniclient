@@ -1,0 +1,9 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.card { display: flex; flex-direction: column; gap: 18px; padding: 28px; border-radius: 14px; background: var(--paper); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06); }
+.head { display: flex; align-items: center; gap: 14px; }
+.head img, .initial { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+.initial { display: grid; place-items: center; color: #fff; background: var(--brand); font: 600 24px var(--font-display); }
+.head h3 { color: var(--brand); font-size: 17px; }
+.role { color: var(--accent-dark); font-size: 13px; font-weight: 600; }
+.card blockquote { margin: 0; color: var(--ink-soft); font-size: 15px; line-height: 1.7; }
+.course { margin-top: auto; color: var(--muted); font-size: 13px; }

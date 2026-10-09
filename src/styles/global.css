@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+/* Design tokens + reset only. Component styles live in CSS Modules next to each component. */
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #3f3a36;
+  --muted: #6f6862;
+  --brand: #6f4e37;        /* coffee brown — lighter than chocolate */
+  --brand-dark: #573b2a;
+  --accent: #9c6b43;       /* warm tan-brown for primary CTAs */
+  --accent-dark: #7e5533;
+  --paper: #ffffff;
+  --surface: #f7f4f1;
+  --line: #e7ded6;
+  --success: #15803d;
+  --danger: #b91c1c;
+  --radius: 10px;
+  --shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --container: 1180px;
+  --nav-height: 72px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 12px); }
+body { margin: 0; min-width: 320px; font-family: var(--font-body); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+::selection { background: var(--brand); color: #fff; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
