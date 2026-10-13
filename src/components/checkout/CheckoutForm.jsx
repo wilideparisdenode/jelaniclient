@@ -20,8 +20,8 @@ export default function CheckoutForm({ course }) {
       const { data } = await api.post('/stripe/checkout-session', {
         courseId: course.id,
         branchId: form.get('branchId') || undefined,
-        name: form.get('name'),
-        phone: form.get('phone') || undefined,
+        name: (form.get('name') || '').trim(),
+        phone: (form.get('phone') || '').trim() || undefined,
       })
       window.location.assign(data.url)
     } catch (requestError) {
@@ -34,7 +34,7 @@ export default function CheckoutForm({ course }) {
     <form className={styles.form} onSubmit={submit}>
       <FormField label="Full name" name="name" autoComplete="name" required minLength={2} maxLength={100} defaultValue={user?.fullName || ''} />
       <FormField label="Email" name="email" type="email" value={user?.email || ''} readOnly hint="Your receipt is sent to your account email." />
-      <FormField label="Phone (optional)" name="phone" type="tel" autoComplete="tel" maxLength={30} defaultValue={user?.phone || ''} />
+      <FormField label="Phone (optional)" name="phone" type="tel" autoComplete="tel" minLength={7} maxLength={30} defaultValue={user?.phone || ''} />
       {course.branches?.length > 0 && (
         <label className={styles.select}>
           <span>Preferred branch</span>

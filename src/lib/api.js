@@ -18,5 +18,11 @@ api.interceptors.request.use(async (config) => {
 })
 
 export function errorMessage(error, fallback = 'Something went wrong. Please try again.') {
-  return error?.response?.data?.error?.message || error?.message || fallback
+  const data = error?.response?.data?.error
+  // Surface which field(s) failed API validation instead of a generic message.
+  if (data?.details?.length) {
+    const fields = [...new Set(data.details.map((detail) => detail.field))]
+    return `${data.message} (check: ${fields.join(', ')})`
+  }
+  return data?.message || error?.message || fallback
 }
