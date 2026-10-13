@@ -16,10 +16,10 @@ export function AuthProvider({ children }) {
       setProfile(data.user)
     } catch (error) {
       setProfile(null)
-      // The stored session is no longer valid (e.g. the account was deleted). Clear it so
-      // the visitor is treated as signed out and sent to the sign-in page instead of
-      // getting stuck on a protected route waiting for a profile that will never load.
-      if (error?.response?.status === 401) await supabase.auth.signOut()
+      // The stored session is no longer valid (e.g. the account was deleted, or the email
+      // is not confirmed). Clear it so the visitor is treated as signed out and sent to the
+      // sign-in page instead of getting stuck on a protected route waiting for a profile.
+      if (error?.response?.status === 401 || error?.response?.data?.error?.code === 'email_not_confirmed') await supabase.auth.signOut()
     }
   }, [])
 
@@ -50,7 +50,19 @@ export function AuthProvider({ children }) {
     isAuthenticated: Boolean(session),
     loading,
     async signIn(email, password) {
-      const { error } = await supabase.auth.signInWithPassword({ email, password })
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+      if (error) throw error
+      // Block access until the email address is verified. Supabase may already reject this
+      // when confirmation is required, but this guarantees it regardless of project settings.
+      if (!data.user?.email_confirmed_at) {
+        await supabase.auth.signOut()
+        const verifyError = new Error('Please verify your email address before signing in. Check your inbox for the confirmation link.')
+        verifyError.code = 'email_not_confirmed'
+        throw verifyError
+      }
+    },
+    async resendVerification(email) {
+      const { error } = await supabase.auth.resend({ type: 'signup', email, options: { emailRedirectTo: window.location.origin } })
       if (error) throw error
     },
     async signUp({ email, password, fullName, phone }) {

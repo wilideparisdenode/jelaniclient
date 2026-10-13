@@ -1,0 +1,4 @@
+# Single-page-app fallback. Any deep link (including Stripe's /checkout/success and
+# /checkout/cancel return URLs) must serve index.html so the client router can handle it
+# instead of the host returning a 404.
+/*    /index.html   200

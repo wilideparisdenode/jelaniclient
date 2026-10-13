@@ -1,4 +1,5 @@
 import { useResource } from '../../hooks/useResource'
+import { useConfirm } from '../../context/ToastContext'
 import { formatDate } from '../../lib/format'
 import Button from '../../components/common/Button'
 import DataTable, { StatusBadge } from '../../components/dashboard/DataTable'
@@ -7,6 +8,12 @@ import PageTitle from '../../components/dashboard/PageTitle'
 // Moderation queue for comments left on posts. Only approved comments show publicly.
 export default function AdminComments() {
   const comments = useResource('/admin/comments')
+  const confirm = useConfirm()
+
+  const removeComment = async (row) => {
+    const ok = await confirm({ title: 'Delete comment', message: 'Delete this comment? This cannot be undone.', confirmLabel: 'Delete comment' })
+    if (ok) await comments.remove(`/admin/comments/${row.id}`, { success: 'Comment deleted.' })
+  }
   return (
     <>
       <PageTitle title="Comments" />
@@ -22,7 +29,7 @@ export default function AdminComments() {
         actions={(row) => (
           <>
             <Button size="sm" variant={row.approved ? 'outline' : 'dark'} onClick={() => comments.update(`/admin/comments/${row.id}`, { approved: !row.approved })}>{row.approved ? 'Unapprove' : 'Approve'}</Button>
-            <Button size="sm" variant="danger" onClick={() => window.confirm('Delete this comment?') && comments.remove(`/admin/comments/${row.id}`)}>Delete</Button>
+            <Button size="sm" variant="danger" onClick={() => removeComment(row)}>Delete</Button>
           </>
         )}
       />

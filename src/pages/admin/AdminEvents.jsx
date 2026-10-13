@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useResource } from '../../hooks/useResource'
+import { useConfirm } from '../../context/ToastContext'
 import { formatDate } from '../../lib/format'
 import Button from '../../components/common/Button'
 import FormField from '../../components/common/FormField'
@@ -12,7 +13,13 @@ import styles from './admin.module.css'
 // Admin/tutor event manager. Events support a cover image and an optional video link.
 export default function AdminEvents() {
   const events = useResource('/admin/events')
+  const confirm = useConfirm()
   const [editing, setEditing] = useState(null)
+
+  const removeEvent = async (row) => {
+    const ok = await confirm({ title: 'Delete event', message: `Delete "${row.title}"? This cannot be undone.`, confirmLabel: 'Delete event' })
+    if (ok) await events.remove(`/admin/events/${row.id}`, { success: `"${row.title}" was deleted.` })
+  }
 
   const submit = async (event) => {
     event.preventDefault()
@@ -48,7 +55,7 @@ export default function AdminEvents() {
           <>
             <Button size="sm" variant="outline" onClick={() => setEditing(row)}>Edit</Button>
             <Button size="sm" variant="outline" onClick={() => events.update(`/admin/events/${row.id}`, { published: !row.published })}>{row.published ? 'Unpublish' : 'Publish'}</Button>
-            <Button size="sm" variant="danger" onClick={() => window.confirm(`Delete "${row.title}"?`) && events.remove(`/admin/events/${row.id}`)}>Delete</Button>
+            <Button size="sm" variant="danger" onClick={() => removeEvent(row)}>Delete</Button>
           </>
         )}
       />

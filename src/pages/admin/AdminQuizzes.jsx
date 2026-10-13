@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import { useResource } from '../../hooks/useResource'
+import { useConfirm } from '../../context/ToastContext'
 import Button from '../../components/common/Button'
 import FormField from '../../components/common/FormField'
 import DataTable, { StatusBadge } from '../../components/dashboard/DataTable'
@@ -14,8 +15,14 @@ const emptyQuestion = () => ({ prompt: '', options: ['', ''], answerIndex: 0 })
 export default function AdminQuizzes() {
   const quizzes = useResource('/admin/quizzes')
   const courses = useFetch('/courses/admin', { select: (b) => b.courses, initial: [] })
+  const confirm = useConfirm()
   const [editing, setEditing] = useState(null)
   const [questions, setQuestions] = useState([emptyQuestion()])
+
+  const removeQuiz = async (row) => {
+    const ok = await confirm({ title: 'Delete quiz', message: `Delete "${row.title}" and its attempts? This cannot be undone.`, confirmLabel: 'Delete quiz' })
+    if (ok) await quizzes.remove(`/admin/quizzes/${row.id}`, { success: `"${row.title}" was deleted.` })
+  }
 
   const reset = () => { setEditing(null); setQuestions([emptyQuestion()]) }
   const startEdit = (quiz) => {
@@ -64,7 +71,7 @@ export default function AdminQuizzes() {
           <>
             <Button size="sm" variant="outline" onClick={() => startEdit(row)}>Edit</Button>
             <Button size="sm" variant="outline" onClick={() => quizzes.update(`/admin/quizzes/${row.id}`, { published: !row.published })}>{row.published ? 'Unpublish' : 'Publish'}</Button>
-            <Button size="sm" variant="danger" onClick={() => window.confirm(`Delete "${row.title}"?`) && quizzes.remove(`/admin/quizzes/${row.id}`)}>Delete</Button>
+            <Button size="sm" variant="danger" onClick={() => removeQuiz(row)}>Delete</Button>
           </>
         )}
       />

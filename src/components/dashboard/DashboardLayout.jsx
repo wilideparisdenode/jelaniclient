@@ -8,7 +8,7 @@ export const ADMIN_NAV = [
   { to: '/admin/courses', label: 'Courses', icon: BookOpen },
   { to: '/admin/categories', label: 'Categories', icon: Folder },
   { to: '/admin/orders', label: 'Orders', icon: ShoppingCart },
-  { to: '/admin/students', label: 'Student Roster', icon: Users },
+  { to: '/admin/students', label: 'Enrollments', icon: Users },
   { to: '/admin/users', label: 'Users', icon: User },
   { to: '/admin/announcements', label: 'Announcements', icon: Megaphone },
   { to: '/admin/posts', label: 'Posts', icon: FileText },

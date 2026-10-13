@@ -1,5 +1,6 @@
 import { useFetch } from '../../hooks/useFetch'
 import { useResource } from '../../hooks/useResource'
+import { useConfirm } from '../../context/ToastContext'
 import { formatDate } from '../../lib/format'
 import Button from '../../components/common/Button'
 import FormField from '../../components/common/FormField'
@@ -12,6 +13,12 @@ import styles from './admin.module.css'
 export default function AdminAnnouncements() {
   const announcements = useResource('/admin/announcements')
   const courses = useFetch('/courses/admin', { select: (b) => b.courses, initial: [] })
+  const confirm = useConfirm()
+
+  const removeAnnouncement = async (row) => {
+    const ok = await confirm({ title: 'Delete announcement', message: `Delete "${row.title}"? This cannot be undone.`, confirmLabel: 'Delete announcement' })
+    if (ok) await announcements.remove(`/admin/announcements/${row.id}`, { success: `"${row.title}" was deleted.` })
+  }
 
   const submit = async (event) => {
     event.preventDefault()
@@ -38,7 +45,7 @@ export default function AdminAnnouncements() {
           { key: 'expires_at', header: 'Expires', render: (row) => formatDate(row.expires_at) ?? 'No expiry' },
         ]}
         actions={(row) => (
-          <Button size="sm" variant="danger" onClick={() => window.confirm(`Delete "${row.title}"?`) && announcements.remove(`/admin/announcements/${row.id}`)}>Delete</Button>
+          <Button size="sm" variant="danger" onClick={() => removeAnnouncement(row)}>Delete</Button>
         )}
       />
 

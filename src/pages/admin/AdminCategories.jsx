@@ -1,4 +1,5 @@
 import { useResource } from '../../hooks/useResource'
+import { useConfirm } from '../../context/ToastContext'
 import Button from '../../components/common/Button'
 import FormField from '../../components/common/FormField'
 import DataTable from '../../components/dashboard/DataTable'
@@ -8,6 +9,12 @@ import styles from './admin.module.css'
 
 export default function AdminCategories() {
   const categories = useResource('/admin/categories')
+  const confirm = useConfirm()
+
+  const removeCategory = async (row) => {
+    const ok = await confirm({ title: 'Delete category', message: `Delete "${row.name}"? Courses in it become uncategorised.`, confirmLabel: 'Delete category' })
+    if (ok) await categories.remove(`/admin/categories/${row.id}`, { success: `"${row.name}" was deleted.` })
+  }
 
   const submit = async (event) => {
     event.preventDefault()
@@ -23,7 +30,7 @@ export default function AdminCategories() {
       <DataTable
         loading={categories.loading} error={categories.error} rows={categories.rows} empty="No categories yet."
         columns={[{ key: 'name', header: 'Name' }, { key: 'description', header: 'Description', render: (row) => row.description ?? '—' }, { key: 'sort_order', header: 'Order' }]}
-        actions={(row) => <Button size="sm" variant="danger" onClick={() => window.confirm(`Delete "${row.name}"?`) && categories.remove(`/admin/categories/${row.id}`)}>Delete</Button>}
+        actions={(row) => <Button size="sm" variant="danger" onClick={() => removeCategory(row)}>Delete</Button>}
       />
       <Panel title="Add a category">
         <form className={styles.form} onSubmit={submit}>

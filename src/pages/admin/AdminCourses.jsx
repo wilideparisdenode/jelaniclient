@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import { useResource } from '../../hooks/useResource'
+import { useConfirm } from '../../context/ToastContext'
 import { formatPrice } from '../../lib/format'
 import Button from '../../components/common/Button'
 import FormField from '../../components/common/FormField'
@@ -22,7 +23,17 @@ export default function AdminCourses() {
   const courses = useResource('/courses/admin', 'courses')
   const categories = useFetch('/admin/categories', { select: (b) => b.items, initial: [] })
   const branches = useFetch('/catalog/branches', { select: (b) => b.items, initial: [] })
+  const confirm = useConfirm()
   const [editing, setEditing] = useState(null)
+
+  const removeCourse = async (row) => {
+    const ok = await confirm({
+      title: 'Delete course',
+      message: `Delete "${row.title}"? This also removes its enrollments, quizzes and announcements, and cannot be undone.`,
+      confirmLabel: 'Delete course',
+    })
+    if (ok) await courses.remove(`/courses/admin/${row.id}`, { success: `"${row.title}" was deleted.` })
+  }
 
   const submit = async (event) => {
     event.preventDefault()
@@ -62,7 +73,7 @@ export default function AdminCourses() {
         actions={(row) => (
           <>
             <Button size="sm" variant="outline" onClick={() => setEditing(row)}>Edit</Button>
-            <Button size="sm" variant="danger" onClick={() => window.confirm(`Delete "${row.title}"?`) && courses.remove(`/courses/admin/${row.id}`)}>Delete</Button>
+            <Button size="sm" variant="danger" onClick={() => removeCourse(row)}>Delete</Button>
           </>
         )}
       />

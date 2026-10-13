@@ -1,5 +1,6 @@
 import { useResource } from '../../hooks/useResource'
 import { useAuth } from '../../context/AuthContext'
+import { useConfirm } from '../../context/ToastContext'
 import { formatDate } from '../../lib/format'
 import DataTable from '../../components/dashboard/DataTable'
 import PageTitle from '../../components/dashboard/PageTitle'
@@ -13,6 +14,19 @@ const ROLES = ['student', 'tutor', 'admin']
 export default function AdminUsers() {
   const users = useResource('/admin/users')
   const { user: me } = useAuth()
+  const confirm = useConfirm()
+
+  const changeRole = async (row, role) => {
+    if (role === 'admin') {
+      const ok = await confirm({
+        title: 'Grant admin access',
+        message: `Give ${row.full_name || row.email} full administrator access? They will be able to manage users, payments and all content.`,
+        confirmLabel: 'Grant admin',
+      })
+      if (!ok) return
+    }
+    await users.update(`/admin/users/${row.id}/role`, { role }, { success: `${row.full_name || row.email} is now a ${role}.` })
+  }
 
   return (
     <>
@@ -37,7 +51,7 @@ export default function AdminUsers() {
                   value={row.role}
                   disabled={row.id === me?.id}
                   aria-label={`Role for ${row.email ?? row.full_name ?? 'user'}`}
-                  onChange={(event) => users.update(`/admin/users/${row.id}/role`, { role: event.target.value })}
+                  onChange={(event) => changeRole(row, event.target.value)}
                 >
                   {ROLES.map((role) => <option key={role} value={role}>{role}</option>)}
                 </select>

@@ -20,6 +20,7 @@ export default function Navbar() {
       <div className={styles.inner}>
         <Link to="/" className={styles.brand} onClick={close} aria-label="Jelani Consulting home">
           <img src={logo} alt="Jelani Consulting" className={styles.logo} />
+          <span className={styles.brandName}>Jelani Consulting</span>
         </Link>
 
         <button type="button" className={styles.toggle} onClick={() => setOpen(!open)} aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open}>

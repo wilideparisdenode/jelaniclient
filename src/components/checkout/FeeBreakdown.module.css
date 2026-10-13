@@ -6,3 +6,4 @@
 .total { font-size: 16px !important; }
 .total dt, .total dd { color: var(--brand); font-weight: 700; }
 .note { color: var(--muted); font-size: 14px; }
+.explainer { margin-top: 8px; color: var(--muted); font-size: 12.5px; line-height: 1.5; }

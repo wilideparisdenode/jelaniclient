@@ -2,13 +2,19 @@ import { useResource } from '../../hooks/useResource'
 import { formatDate } from '../../lib/format'
 import DataTable from '../../components/dashboard/DataTable'
 import PageTitle from '../../components/dashboard/PageTitle'
+import styles from './admin.module.css'
 
-// Confirmed (paid) students only.
+// Confirmed (paid) students only — one row per paid course registration.
 export default function AdminRoster() {
   const roster = useResource('/admin/roster', 'students')
   return (
     <>
-      <PageTitle title="Student Roster" />
+      <PageTitle title="Enrollments" />
+      <p className={styles.check} style={{ marginBottom: 12 }}>
+        Every student with a <strong>confirmed (paid) registration</strong>. Each row shows the student's
+        contact details, the course they enrolled in, when they registered and the date their payment was
+        confirmed. Pending or cancelled orders appear under <strong>Orders</strong> instead.
+      </p>
       <DataTable
         loading={roster.loading} error={roster.error} rows={roster.rows} empty="No enrolled students yet."
         columns={[
