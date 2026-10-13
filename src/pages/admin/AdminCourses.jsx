@@ -43,7 +43,7 @@ export default function AdminCourses() {
     }
     const ok = editing
       ? await courses.update(`/courses/admin/${editing.id}`, body)
-      : await courses.create('/courses/admin', { id: form.get('id'), ...body })
+      : await courses.create('/courses/admin', body)
     if (ok) { setEditing(null); event.target.reset() }
   }
 
@@ -69,7 +69,6 @@ export default function AdminCourses() {
 
       <Panel title={editing ? `Edit: ${editing.title}` : 'Add a course'}>
         <form key={editing?.id ?? 'new'} className={styles.form} onSubmit={submit}>
-          {!editing && <FormField label="Course ID (slug)" name="id" required pattern="[a-z0-9\-]{2,80}" hint="Lowercase letters, numbers and hyphens." />}
           <FormField label="Title" name="title" required minLength={3} maxLength={120} defaultValue={values.title} />
           <label className={styles.select}><span>Category</span>
             <select name="categoryId" defaultValue={values.categoryId ?? ''}>
