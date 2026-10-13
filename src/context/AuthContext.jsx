@@ -50,7 +50,17 @@ export function AuthProvider({ children }) {
       if (error) throw error
     },
     async signUp({ email, password, fullName, phone }) {
-      const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: fullName, phone } } })
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          // Return the confirmation link to whichever site the user signed up from:
+          // localhost during local development, the deployed domain in production.
+          // Supabase uses this only when the origin is in the allowed redirect list.
+          emailRedirectTo: window.location.origin,
+          data: { full_name: fullName, phone },
+        },
+      })
       if (error) throw error
       // `session` is null when email confirmation is required in the Supabase project.
       return { needsConfirmation: !data.session }
