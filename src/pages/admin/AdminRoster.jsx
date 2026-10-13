@@ -16,7 +16,8 @@ export default function AdminRoster() {
           { key: 'email', header: 'Email' },
           { key: 'phone', header: 'Phone', render: (row) => row.phone || '—' },
           { key: 'course', header: 'Course', render: (row) => row.course?.title },
-          { key: 'createdAt', header: 'Enrolled', render: (row) => formatDate(row.createdAt) },
+          { key: 'createdAt', header: 'Registered', render: (row) => formatDate(row.createdAt) },
+          { key: 'updatedAt', header: 'Paid on', render: (row) => formatDate(row.updatedAt) ?? '—' },
         ]}
       />
     </>
