@@ -14,8 +14,12 @@ export function AuthProvider({ children }) {
     try {
       const { data } = await api.get('/auth/me')
       setProfile(data.user)
-    } catch {
+    } catch (error) {
       setProfile(null)
+      // The stored session is no longer valid (e.g. the account was deleted). Clear it so
+      // the visitor is treated as signed out and sent to the sign-in page instead of
+      // getting stuck on a protected route waiting for a profile that will never load.
+      if (error?.response?.status === 401) await supabase.auth.signOut()
     }
   }, [])
 
