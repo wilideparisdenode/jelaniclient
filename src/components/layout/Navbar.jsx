@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, User, X } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import CoursesDropdown from './CoursesDropdown'
 import UpdatesDropdown from './UpdatesDropdown'
@@ -10,7 +10,7 @@ import styles from './Navbar.module.css'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { isAuthenticated, isAdmin, isStaff, signOut } = useAuth()
+  const { isAuthenticated, isAdmin, isStaff, avatarUrl, signOut } = useAuth()
   const close = () => setOpen(false)
   const dashboard = isAdmin ? '/admin' : isStaff ? '/tutor' : '/dashboard'
   const dashboardLabel = isAdmin ? 'Admin' : isStaff ? 'Tutor' : 'My learning'
@@ -34,8 +34,10 @@ export default function Navbar() {
           {isAuthenticated
             ? (
               <>
-                <NavLink to="/profile" onClick={close} className={({ isActive }) => (isActive ? styles.active : '')}>Profile</NavLink>
                 <NavLink to={dashboard} onClick={close}>{dashboardLabel}</NavLink>
+                <NavLink to="/profile" onClick={close} className={({ isActive }) => (isActive ? `${styles.avatarLink} ${styles.active}` : styles.avatarLink)} aria-label="My profile" title="My profile">
+                  {avatarUrl ? <img src={avatarUrl} alt="" className={styles.avatar} /> : <User size={20} />}
+                </NavLink>
                 <button type="button" className={styles.link} onClick={() => { close(); signOut() }}>Sign out</button>
               </>
             )

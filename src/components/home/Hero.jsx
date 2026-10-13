@@ -63,8 +63,6 @@ export default function Hero() {
           tabIndex={0}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
-          onFocus={() => setPaused(true)}
-          onBlur={() => setPaused(false)}
           onKeyDown={(event) => {
             if (event.key === 'ArrowLeft') goTo(index - 1)
             if (event.key === 'ArrowRight') goTo(index + 1)

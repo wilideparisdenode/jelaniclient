@@ -8,6 +8,11 @@
 .link { padding: 0; border: 0; background: none; }
 .toggle { display: none; padding: 6px; border: 0; background: none; color: var(--brand); }
 
+.avatarLink { display: inline-grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink-soft); overflow: hidden; transition: border-color 0.2s, color 0.2s; }
+.avatarLink:hover { color: var(--accent); border-color: var(--accent); }
+.avatarLink.active { color: var(--accent); border-color: var(--accent); }
+.avatar { width: 100%; height: 100%; object-fit: cover; }
+
 @media (max-width: 980px) {
   .logo { height: 50px; }
 }
@@ -15,5 +20,5 @@
   .toggle { display: grid; }
   .nav { position: absolute; top: var(--nav-height); right: 0; left: 0; display: none; flex-direction: column; align-items: stretch; gap: 16px; padding: 20px clamp(16px, 4vw, 24px) 28px; border-bottom: 1px solid var(--line); background: var(--paper); max-height: calc(100vh - var(--nav-height)); overflow-y: auto; }
   .nav.open { display: flex; }
-  .nav > a:last-child { text-align: center; color: var(--on-brand); }
+  .nav > a:last-child:not(.avatarLink) { text-align: center; color: var(--on-brand); }
 }

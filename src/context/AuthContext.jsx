@@ -39,6 +39,7 @@ export function AuthProvider({ children }) {
     session,
     user: profile,
     role: profile?.role ?? null,
+    avatarUrl: profile?.avatarUrl ?? null,
     isAdmin: profile?.role === 'admin',
     isTutor: profile?.role === 'tutor',
     isStaff: profile?.role === 'admin' || profile?.role === 'tutor',
