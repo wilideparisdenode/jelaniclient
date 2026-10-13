@@ -7,7 +7,10 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.about}>
-          <span className={styles.brand}><img src={logo} alt="Jelani Consulting" className={styles.logo} /></span>
+          <span className={styles.brand}>
+            <img src={logo} alt="Jelani Consulting" className={styles.logo} />
+            <span className={styles.brandName}>JelaniConsulting</span>
+          </span>
           <p>Career-focused courses taught by industry practitioners, with hiring partners ready to meet you.</p>
         </div>
         <nav className={styles.col} aria-label="Learn">

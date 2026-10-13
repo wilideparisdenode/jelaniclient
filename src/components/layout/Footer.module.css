@@ -1,6 +1,7 @@
 .footer { padding: 56px 24px 28px; color: #e6ddd4; background: var(--brand-dark); }
 .inner { max-width: var(--container); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
-.brand { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; color: #fff; font: 700 20px var(--font-display); }
+.brand { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 12px; color: #fff; font: 700 20px var(--font-display); }
+.brandName { color: #fff; font: 700 22px var(--font-display); letter-spacing: 0.3px; }
 .logo { height: 44px; width: auto; display: block; }
 .about p { max-width: 340px; font-size: 14px; }
 .col { display: grid; gap: 10px; align-content: start; font-size: 14px; }
