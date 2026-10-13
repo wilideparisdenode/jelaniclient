@@ -1,7 +1,7 @@
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 24px; }
 .card { overflow: hidden; border-radius: 14px; background: var(--paper); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06); text-align: center; padding-bottom: 24px; }
 .card img, .initial { width: 100%; aspect-ratio: 1; object-fit: cover; margin-bottom: 18px; }
-.initial { display: grid; place-items: center; color: #fff; background: var(--brand); font: 600 56px var(--font-display); }
+.initial { display: grid; place-items: center; color: var(--on-accent); background: var(--brand); font: 600 56px var(--font-display); }
 .card h3 { padding: 0 16px; color: var(--brand); font-size: 18px; }
 .title { margin-top: 2px; padding: 0 16px; color: var(--accent-dark); font-size: 13px; font-weight: 600; }
 .bio { margin-top: 10px; padding: 0 18px; color: var(--ink-soft); font-size: 14px; }

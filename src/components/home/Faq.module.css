@@ -1,0 +1,9 @@
+.list { max-width: 880px; margin: 0 auto; display: grid; gap: 12px; }
+.item { border: 1px solid var(--line); border-radius: 12px; background: var(--paper); overflow: hidden; transition: border-color 0.2s; }
+.item[open] { border-color: var(--accent); }
+.item summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; color: var(--brand); font-size: 16px; font-weight: 600; cursor: pointer; list-style: none; }
+.item summary::-webkit-details-marker { display: none; }
+.item summary:hover { color: var(--accent); }
+.item p { padding: 0 22px 20px; color: var(--ink-soft); font-size: 15px; line-height: 1.7; }
+.chevron { flex: none; transition: transform 0.25s ease; }
+.item[open] .chevron { transform: rotate(180deg); }

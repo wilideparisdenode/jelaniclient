@@ -13,14 +13,18 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import PostsPage from './pages/PostsPage'
 import PostDetailPage from './pages/PostDetailPage'
+import EventsPage from './pages/EventsPage'
+import ProfilePage from './pages/ProfilePage'
 import AdminCourses from './pages/admin/AdminCourses'
 import AdminCategories from './pages/admin/AdminCategories'
 import AdminOrders from './pages/admin/AdminOrders'
 import AdminRoster from './pages/admin/AdminRoster'
+import AdminUsers from './pages/admin/AdminUsers'
 import AdminAnnouncements from './pages/admin/AdminAnnouncements'
 import AdminPosts from './pages/admin/AdminPosts'
 import AdminComments from './pages/admin/AdminComments'
 import AdminQuizzes from './pages/admin/AdminQuizzes'
+import AdminEvents from './pages/admin/AdminEvents'
 import AdminQa from './pages/admin/AdminQa'
 import StudentCourses from './pages/student/StudentCourses'
 import StudentOrders from './pages/student/StudentOrders'
@@ -43,8 +47,10 @@ export default function App() {
         <Route path="register" element={<RegisterPage />} />
         <Route path="posts" element={<PostsPage />} />
         <Route path="posts/:id" element={<PostDetailPage />} />
+        <Route path="events" element={<EventsPage />} />
 
         <Route element={<ProtectedRoute />}>
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="checkout/:courseId" element={<CheckoutPage />} />
           <Route path="checkout/success" element={<PaymentReturnPage />} />
           <Route path="checkout/cancel" element={<PaymentReturnPage cancelled />} />
@@ -59,6 +65,18 @@ export default function App() {
           </Route>
         </Route>
 
+        <Route element={<ProtectedRoute roles={['admin', 'tutor']} />}>
+          <Route path="tutor" element={<DashboardLayout variant="tutor" />}>
+            <Route index element={<Navigate to="courses" replace />} />
+            <Route path="courses" element={<AdminCourses />} />
+            <Route path="quizzes" element={<AdminQuizzes />} />
+            <Route path="posts" element={<AdminPosts />} />
+            <Route path="announcements" element={<AdminAnnouncements />} />
+            <Route path="events" element={<AdminEvents />} />
+            <Route path="qa" element={<AdminQa />} />
+          </Route>
+        </Route>
+
         <Route element={<ProtectedRoute adminOnly />}>
           <Route path="admin" element={<DashboardLayout variant="admin" />}>
             <Route index element={<Navigate to="courses" replace />} />
@@ -66,8 +84,10 @@ export default function App() {
             <Route path="categories" element={<AdminCategories />} />
             <Route path="orders" element={<AdminOrders />} />
             <Route path="students" element={<AdminRoster />} />
+            <Route path="users" element={<AdminUsers />} />
             <Route path="announcements" element={<AdminAnnouncements />} />
             <Route path="posts" element={<AdminPosts />} />
+            <Route path="events" element={<AdminEvents />} />
             <Route path="comments" element={<AdminComments />} />
             <Route path="quizzes" element={<AdminQuizzes />} />
             <Route path="qa" element={<AdminQa />} />

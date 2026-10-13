@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Jelani Consulting — career-focused, instructor-led courses in technology, data, design and marketing. Free and paid programmes with secure Stripe checkout." />
     <title>Jelani Consulting</title>
+    <script>
+      // Apply the saved (or system) theme before first paint to avoid a flash.
+      try {
+        var t = localStorage.getItem('jelani-theme')
+        if (t !== 'dark' && t !== 'light') t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        document.documentElement.setAttribute('data-theme', t)
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -8,6 +8,7 @@ import AlumniSuccess from '../components/home/AlumniSuccess'
 import Testimonials from '../components/home/Testimonials'
 import StaffGrid from '../components/home/StaffGrid'
 import CtaBand from '../components/home/CtaBand'
+import Faq from '../components/home/Faq'
 
 // Composition only: each section owns its data and styles.
 export default function HomePage() {
@@ -22,6 +23,7 @@ export default function HomePage() {
       <AlumniSuccess />
       <Testimonials />
       <StaffGrid />
+      <Faq />
       <CtaBand />
     </>
   )

@@ -17,11 +17,13 @@ export default function AdminPosts() {
   const submit = async (event) => {
     event.preventDefault()
     const form = new FormData(event.currentTarget)
+    const expires = form.get('expires_at')
     const body = {
       title: form.get('title'),
       excerpt: form.get('excerpt') || undefined,
       body: form.get('body'),
       cover_image: form.get('cover_image') || undefined,
+      expires_at: expires ? new Date(expires).toISOString() : undefined,
       published: form.get('published') === 'on',
     }
     const ok = editing ? await posts.update(`/admin/posts/${editing.id}`, body) : await posts.create('/admin/posts', body)
@@ -39,6 +41,7 @@ export default function AdminPosts() {
           { key: 'title', header: 'Title' },
           { key: 'author_name', header: 'Author', render: (row) => row.author_name ?? '—' },
           { key: 'created_at', header: 'Created', render: (row) => formatDate(row.created_at) },
+          { key: 'expires_at', header: 'Expires', render: (row) => formatDate(row.expires_at) ?? 'No expiry' },
           { key: 'published', header: 'Status', render: (row) => <StatusBadge value={row.published ? 'approved' : 'pending'} /> },
         ]}
         actions={(row) => (
@@ -56,6 +59,7 @@ export default function AdminPosts() {
           <ImageField className={styles.wide} label="Cover image" name="cover_image" folder="posts" defaultValue={values.cover_image ?? ''} hint="Upload a file from your device, or paste a direct https image link." />
           <FormField label="Excerpt (shown on the list)" name="excerpt" maxLength={300} defaultValue={values.excerpt ?? ''} />
           <FormField label="Body" name="body" as="textarea" required minLength={10} maxLength={20000} defaultValue={values.body} />
+          <FormField label="Active until (optional)" name="expires_at" type="datetime-local" defaultValue={values.expires_at ? new Date(values.expires_at).toISOString().slice(0, 16) : ''} hint="Leave blank to keep the post live indefinitely." />
           <label className={styles.check}><input type="checkbox" name="published" defaultChecked={values.published ?? true} /> Published</label>
           <div className={styles.actions}>
             <Button type="submit" variant="dark">{editing ? 'Save changes' : 'Create post'}</Button>

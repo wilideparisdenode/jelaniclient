@@ -3,13 +3,17 @@ import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import CoursesDropdown from './CoursesDropdown'
+import UpdatesDropdown from './UpdatesDropdown'
+import ThemeToggle from '../common/ThemeToggle'
 import logo from '../../assets/JelaniCon-Logo.png'
 import styles from './Navbar.module.css'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
-  const { isAuthenticated, isAdmin, signOut } = useAuth()
+  const { isAuthenticated, isAdmin, isStaff, signOut } = useAuth()
   const close = () => setOpen(false)
+  const dashboard = isAdmin ? '/admin' : isStaff ? '/tutor' : '/dashboard'
+  const dashboardLabel = isAdmin ? 'Admin' : isStaff ? 'Tutor' : 'My learning'
 
   return (
     <header className={styles.header}>
@@ -24,12 +28,14 @@ export default function Navbar() {
 
         <nav className={`${styles.nav} ${open ? styles.open : ''}`} aria-label="Primary">
           <CoursesDropdown onNavigate={close} />
-          <NavLink to="/posts" onClick={close} className={({ isActive }) => (isActive ? styles.active : '')}>News</NavLink>
+          <UpdatesDropdown onNavigate={close} />
           <NavLink to="/support" onClick={close} className={({ isActive }) => (isActive ? styles.active : '')}>Customer Service</NavLink>
+          <ThemeToggle />
           {isAuthenticated
             ? (
               <>
-                <NavLink to={isAdmin ? '/admin' : '/dashboard'} onClick={close}>{isAdmin ? 'Admin' : 'My learning'}</NavLink>
+                <NavLink to="/profile" onClick={close} className={({ isActive }) => (isActive ? styles.active : '')}>Profile</NavLink>
+                <NavLink to={dashboard} onClick={close}>{dashboardLabel}</NavLink>
                 <button type="button" className={styles.link} onClick={() => { close(); signOut() }}>Sign out</button>
               </>
             )

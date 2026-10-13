@@ -1,0 +1,11 @@
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 28px; }
+.card { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); overflow: hidden; box-shadow: var(--shadow); }
+.cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.body { display: grid; gap: 12px; padding: 22px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 16px; color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; }
+.body h2 { color: var(--brand); font: 600 clamp(20px, 2.4vw, 26px)/1.2 var(--font-display); }
+.text { color: var(--ink-soft); font-size: 15px; line-height: 1.7; white-space: pre-line; }
+.embed { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; }
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video { width: 100%; border-radius: 10px; background: #000; }
+.videoLink { color: var(--accent); font-weight: 600; }

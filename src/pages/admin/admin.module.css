@@ -14,7 +14,7 @@
 .qa { display: grid; gap: 10px; margin-bottom: 14px; padding: 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
 .qa h3 { color: var(--brand); font-size: 16px; }
 .qa small { color: var(--muted); }
-.answer { padding: 10px 12px; border-left: 3px solid var(--success); background: #f0fdf4; color: var(--ink-soft); font-size: 14px; }
+.answer { padding: 10px 12px; border-left: 3px solid var(--success); background: var(--success-soft); color: var(--ink-soft); font-size: 14px; }
 .questions { display: grid; gap: 16px; }
 .question { display: grid; gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
 .question > header { display: flex; align-items: center; justify-content: space-between; gap: 10px; }

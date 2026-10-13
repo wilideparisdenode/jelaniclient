@@ -38,7 +38,10 @@ export function AuthProvider({ children }) {
   const value = useMemo(() => ({
     session,
     user: profile,
+    role: profile?.role ?? null,
     isAdmin: profile?.role === 'admin',
+    isTutor: profile?.role === 'tutor',
+    isStaff: profile?.role === 'admin' || profile?.role === 'tutor',
     isAuthenticated: Boolean(session),
     loading,
     async signIn(email, password) {
@@ -52,7 +55,8 @@ export function AuthProvider({ children }) {
       return { needsConfirmation: !data.session }
     },
     async signOut() { await supabase.auth.signOut() },
-  }), [session, profile, loading])
+    refreshProfile: () => loadProfile(session),
+  }), [session, profile, loading, loadProfile])
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }

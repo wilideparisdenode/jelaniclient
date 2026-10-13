@@ -1,6 +1,6 @@
-.section { padding: 88px 24px; }
-.container { max-width: var(--container); margin: 0 auto; }
+.section { padding: clamp(56px, 7vw, 92px) clamp(20px, 4vw, 56px); }
+.container { width: 100%; max-width: var(--container); margin: 0 auto; }
 .plain { background: var(--paper); }
 .surface { background: var(--surface); }
-.dark { background: var(--brand); color: #fff; }
-@media (max-width: 720px) { .section { padding: 60px 20px; } }
+.dark { background: var(--brand); color: var(--on-brand); }
+@media (max-width: 720px) { .section { padding: 56px 18px; } }

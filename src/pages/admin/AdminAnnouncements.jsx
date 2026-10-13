@@ -21,6 +21,7 @@ export default function AdminAnnouncements() {
       title: data.title,
       body: data.body,
       course_id: data.course_id || undefined,
+      expires_at: data.expires_at ? new Date(data.expires_at).toISOString() : undefined,
     })
     if (ok) form.reset()
   }
@@ -34,6 +35,7 @@ export default function AdminAnnouncements() {
           { key: 'title', header: 'Title' },
           { key: 'course', header: 'Audience', render: (row) => row.course?.title ?? 'All students' },
           { key: 'created_at', header: 'Posted', render: (row) => formatDate(row.created_at) },
+          { key: 'expires_at', header: 'Expires', render: (row) => formatDate(row.expires_at) ?? 'No expiry' },
         ]}
         actions={(row) => (
           <Button size="sm" variant="danger" onClick={() => window.confirm(`Delete "${row.title}"?`) && announcements.remove(`/admin/announcements/${row.id}`)}>Delete</Button>
@@ -50,6 +52,7 @@ export default function AdminAnnouncements() {
             </select>
           </label>
           <FormField label="Message" name="body" as="textarea" required minLength={3} maxLength={4000} />
+          <FormField label="Active until (optional)" name="expires_at" type="datetime-local" hint="Leave blank to keep the announcement active indefinitely." />
           <div className={styles.actions}><Button type="submit" variant="dark">Publish announcement</Button></div>
         </form>
       </Panel>
