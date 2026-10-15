@@ -11,6 +11,6 @@
 .groupTitle:hover { color: var(--accent); }
 .note { grid-column: 1 / -1; color: var(--muted); font-size: 14px; }
 .all { grid-column: 1 / -1; padding-top: 14px; border-top: 1px solid var(--line); color: var(--accent); font-weight: 600; font-size: 14px; }
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
   .menu { position: static; width: 100%; margin-top: 12px; grid-template-columns: 1fr; box-shadow: none; }
 }

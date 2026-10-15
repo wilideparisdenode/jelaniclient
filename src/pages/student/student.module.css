@@ -1,4 +1,4 @@
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); gap: 20px; }
 .card { display: grid; gap: 8px; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
 .card h3 { color: var(--brand); font-size: 17px; }
 .card p { color: var(--ink-soft); font-size: 14px; }

@@ -4,3 +4,7 @@
 .sub { margin-top: -8px; color: var(--ink-soft); font-size: 15px; }
 .footer { color: var(--muted); font-size: 14px; text-align: center; }
 .footer a { color: var(--accent-dark); font-weight: 600; }
+@media (max-width: 420px) {
+  .wrap { padding: 28px 16px; }
+  .card { padding: 28px 22px; }
+}

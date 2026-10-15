@@ -1,4 +1,4 @@
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 24px; }
 .card { display: flex; flex-direction: column; gap: 18px; padding: 28px; border-radius: 14px; background: var(--paper); box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06); }
 .head { display: flex; align-items: center; gap: 14px; }
 .head img, .initial { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }

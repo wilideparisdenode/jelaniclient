@@ -1,2 +1,2 @@
-.row { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
-.row h1 { color: var(--brand); font: 600 28px var(--font-display); }
+.row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 16px; margin-bottom: 24px; }
+.row h1 { color: var(--brand); font: 600 clamp(22px, 5vw, 28px) var(--font-display); }

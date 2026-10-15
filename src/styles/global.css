@@ -51,7 +51,7 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 12px); }
-body { margin: 0; min-width: 320px; font-family: var(--font-body); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; line-height: 1.6; transition: background 0.25s ease, color 0.25s ease; }
+body { margin: 0; min-width: 320px; font-family: var(--font-body); color: var(--ink); background: var(--paper); -webkit-font-smoothing: antialiased; line-height: 1.6; overflow-wrap: break-word; transition: background 0.25s ease, color 0.25s ease; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
 p { margin: 0; }
 a { color: inherit; text-decoration: none; }

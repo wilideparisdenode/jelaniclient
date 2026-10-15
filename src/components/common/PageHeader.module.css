@@ -2,3 +2,7 @@
 .inner { max-width: var(--container); margin: 0 auto; }
 .header h1 { font: 600 clamp(28px, 4vw, 42px)/1.15 var(--font-display); }
 .header p { max-width: 620px; margin-top: 10px; color: #d6e0ee; font-size: 17px; }
+@media (max-width: 600px) {
+  .header { padding: 40px 18px; }
+  .header p { font-size: 16px; }
+}

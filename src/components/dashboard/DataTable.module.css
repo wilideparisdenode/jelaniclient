@@ -7,3 +7,6 @@
 .confirmed, .approved { color: var(--success); background: #dcfce7; }
 .pending { color: #92400e; background: #fef3c7; }
 .cancelled, .refunded, .rejected { color: var(--danger); background: #fee2e2; }
+@media (max-width: 640px) {
+  .table th, .table td { padding: 10px 12px; }
+}
