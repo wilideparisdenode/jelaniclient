@@ -13,8 +13,8 @@ export default function DataTable({ columns, rows, loading, error, empty = 'Noth
         <tbody>
           {rows.map((row) => (
             <tr key={row[rowKey]}>
-              {columns.map((column) => <td key={column.key}>{column.render ? column.render(row) : row[column.key]}</td>)}
-              {actions && <td className={styles.actions}>{actions(row)}</td>}
+              {columns.map((column) => <td key={column.key} data-label={column.header}>{column.render ? column.render(row) : row[column.key]}</td>)}
+              {actions && <td className={styles.actions} data-label="Actions">{actions(row)}</td>}
             </tr>
           ))}
         </tbody>
