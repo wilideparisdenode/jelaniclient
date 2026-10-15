@@ -1,7 +1,7 @@
-.field { display: grid; gap: 6px; }
+.field { display: grid; gap: 6px; min-width: 0; }
 .field label { color: var(--ink-soft); font-size: 14px; font-weight: 600; }
 .field small { color: var(--muted); font-size: 12px; }
-.row { display: flex; gap: 8px; }
+.row { display: flex; gap: 8px; min-width: 0; }
 .row > input[type='url'] { flex: 1; min-width: 0; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font-size: 15px; }
 .upload { display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--brand); border-radius: var(--radius); color: var(--brand); background: transparent; font-weight: 600; white-space: nowrap; }
 .upload:hover:not(:disabled) { color: #fff; background: var(--brand); }

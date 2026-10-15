@@ -1,5 +1,5 @@
 .wrap { min-height: calc(100vh - var(--nav-height)); display: grid; place-items: center; padding: 48px 20px; background: var(--surface); }
-.card { width: min(100%, 440px); display: grid; gap: 18px; padding: 36px 32px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: var(--shadow); }
+.card { width: min(100%, 440px); display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; padding: 36px 32px; border: 1px solid var(--line); border-radius: 16px; background: var(--paper); box-shadow: var(--shadow); }
 .card h1 { color: var(--brand); font: 600 30px var(--font-display); }
 .sub { margin-top: -8px; color: var(--ink-soft); font-size: 15px; }
 .footer { color: var(--muted); font-size: 14px; text-align: center; }

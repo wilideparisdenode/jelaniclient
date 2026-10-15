@@ -1,4 +1,4 @@
-.form { display: grid; gap: 16px; }
-.select { display: grid; gap: 6px; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
-.select select { padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font-weight: 400; }
+.form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.select { display: grid; gap: 6px; min-width: 0; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+.select select { width: 100%; min-width: 0; max-width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font-weight: 400; }
 .error { color: var(--danger); font-size: 14px; }

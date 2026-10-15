@@ -5,7 +5,7 @@
 .avatarActions small { flex-basis: 100%; color: var(--muted); font-size: 12px; }
 .file { display: none; }
 
-.form { max-width: 560px; display: grid; gap: 16px; }
+.form { max-width: 560px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
 .meta { color: var(--muted); font-size: 14px; }
 .meta strong { color: var(--brand); text-transform: capitalize; }
 .error { color: var(--danger); }

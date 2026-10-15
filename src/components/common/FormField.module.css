@@ -1,6 +1,6 @@
-.field { display: grid; gap: 6px; }
+.field { display: grid; gap: 6px; min-width: 0; }
 .field label { color: var(--ink-soft); font-size: 14px; font-weight: 600; }
-.field input, .field textarea, .field select { width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font-size: 15px; }
+.field input, .field textarea, .field select { width: 100%; min-width: 0; max-width: 100%; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font-size: 15px; }
 .field textarea { min-height: 110px; resize: vertical; }
 .field input:read-only { color: var(--muted); background: var(--surface); }
 .field small { color: var(--muted); font-size: 12px; }

@@ -16,8 +16,8 @@
 .comment { display: grid; gap: 4px; padding: 16px 18px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
 .comment small { color: var(--muted); }
 .comment p { color: var(--ink-soft); }
-.form { display: grid; gap: 12px; }
-.form textarea { min-height: 100px; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); resize: vertical; }
+.form { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; }
+.form textarea { width: 100%; min-width: 0; max-width: 100%; min-height: 100px; padding: 11px 12px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); resize: vertical; }
 .note { color: var(--muted); font-size: 14px; }
 .ok { color: var(--success); font-size: 14px; font-weight: 600; }
 .error { color: var(--danger); font-size: 14px; }
